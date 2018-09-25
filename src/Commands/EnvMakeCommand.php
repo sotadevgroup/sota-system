@@ -12,7 +12,7 @@ class EnvMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'env:make';
+    protected $signature = 'env:make {--force}';
 
 
     /**
@@ -41,7 +41,7 @@ class EnvMakeCommand extends Command
      */
     public function handle()
     {
-        if (file_exists(app()->environmentFilePath())) {
+        if (file_exists(app()->environmentFilePath()) && !$this->hasOption('force')) {
           return $this->error("The .env file already exists");
         }
         
