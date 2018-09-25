@@ -8,6 +8,7 @@ use Dotenv\Dotenv;
 use Sota\System\Logging\RequestIdProcessor;
 use Sota\System\Middleware\SentryContext;
 use Sota\System\Commands\SetEnvCommand;
+use Sota\System\Commands\EnvMakeCommand;
 
 class SystemServiceProvider extends ServiceProvider
 {
@@ -97,8 +98,10 @@ class SystemServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/sentry.php', 'sentry');
         
         $this->app->bind('command.env:set', SetEnvCommand::class);
+        $this->app->bind('command.env:make', EnvMakeCommand::class);
 
         $this->commands([
+            'command.env:make',
             'command.env:set'
         ]);
         
