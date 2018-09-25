@@ -1,5 +1,7 @@
 <?php
 
+    // frontend
+
     $env = [
         "APP_ENV" => env('APP_ENV'),
         "BUILD" => env('BUILD', null),
