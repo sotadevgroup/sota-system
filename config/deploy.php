@@ -42,6 +42,15 @@ return [
             'deploy:unlock',
             'cleanup',
             'hook:done',
+        ],
+        'first' => [
+            'deploy:prepare',
+            'deploy:lock',
+            'deploy:release',
+            'upload',
+            'deploy:writable',
+            'deploy:symlink',
+            'deploy:unlock'
         ]
     ],
 
