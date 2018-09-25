@@ -5,7 +5,7 @@ namespace Sota\System\Commands;
 use InvalidArgumentException;
 use Illuminate\Console\Command;
 
-class SetEnvCommand extends Command
+class EnvSetCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -13,12 +13,14 @@ class SetEnvCommand extends Command
      * @var string
      */
     protected $signature = 'env:set {key} {value?}';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Set and save an environment variable in the .env file';
+
     /**
      * Create a new command instance.
      *
@@ -28,6 +30,7 @@ class SetEnvCommand extends Command
     {
         parent::__construct();
     }
+
     /**
      * Execute the console command.
      *
@@ -51,6 +54,7 @@ class SetEnvCommand extends Command
         $this->writeFile($envFilePath, $contents);
         return $this->info("A new environment variable with key '{$key}' has been set to '{$value}'");
     }
+
     /**
      * Overwrite the contents of a file.
      *
@@ -64,6 +68,7 @@ class SetEnvCommand extends Command
         fwrite($file, $contents);
         return fclose($file);
     }
+
     /**
      * Get the old value of a given key from an environment file.
      *
@@ -80,6 +85,7 @@ class SetEnvCommand extends Command
         }
         return '';
     }
+
     /**
      * Determine what the supplied key and value is from the current command.
      *
@@ -105,6 +111,7 @@ class SetEnvCommand extends Command
         }
         return [strtoupper($key), $value];
     }
+    
     /**
      * Check if a given string is valid as an environment variable key.
      *
