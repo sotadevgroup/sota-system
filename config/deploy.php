@@ -59,7 +59,7 @@ return [
     'hooks' => [
         // Right before we start deploying.
         'start' => [
-            'artisan:backup_old'
+            //
         ],
         
         // Code and composer vendors are ready but nothing is built.
@@ -70,6 +70,7 @@ return [
         // Deployment is done but not live yet (before symlink)
         'ready' => [
             'artisan:down',
+            'artisan:backup',
             'artisan:storage:link',
             'artisan:view:clear',
             'artisan:cache:clear',
@@ -89,7 +90,6 @@ return [
             'deploy:unlock',
             'artisan:config:clear',
             'artisan:up',
-            'artisan:backup',
         ],
         
         // Deployment failed.
