@@ -53,7 +53,7 @@ class SystemServiceProvider extends ServiceProvider
         $processor = new RequestIdProcessor(request());
         $monolog->pushProcessor($processor);
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'sota');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'system');
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Publishing is only necessary when using the CLI.
