@@ -15,7 +15,10 @@ Route::middleware('api')
     }
 );
 
+Route::get('/', function () {
+    return response()->view('system::frontend');
+})->where('any', '.*');
+
 Route::get('/portal{any}', function ($any = '') {
-    return response()
-        ->view('system::frontend');
+    return response()->view('system::frontend');
 })->where('any', '.*');
