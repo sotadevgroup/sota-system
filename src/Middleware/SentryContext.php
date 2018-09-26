@@ -16,8 +16,6 @@ class SentryContext
      */
     public function handle($request, Closure $next)
     {
-        echo '1111111';
-        
         if (app()->bound('sentry')) {
             
             $sentry = app('sentry');
