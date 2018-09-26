@@ -19,10 +19,10 @@ class SystemServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        // Add Sentry Middleware
         $this->app['router']->prependMiddlewareToGroup('api', SentryContext::class);
 
-        // load builenv
+        // Load builenv
         if (!App::environment('local')) {
             
             // Load buildenv
@@ -37,7 +37,7 @@ class SystemServiceProvider extends ServiceProvider
             }
         }
         
-        // register backup drive
+        // Register backup drive
         config([ 'filesystems.disks.backup' => [
             'driver' => 's3',
             'key' => env('BACKUPS_AWS_KEY'),
@@ -52,36 +52,12 @@ class SystemServiceProvider extends ServiceProvider
         $monolog = logger();
         $processor = new RequestIdProcessor(request());
         $monolog->pushProcessor($processor);
-
+        
+        // Load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'system');
+
+        // Load routes
         $this->loadRoutesFrom(__DIR__.'/routes.php');
-
-        // Publishing is only necessary when using the CLI.
-        if ($this->app->runningInConsole()) {
-
-            // Publishing the configuration file.
-            //$this->publishes([
-            //    __DIR__.'/../config/sota-system.php' => config_path('sota-system.php'),
-            //], 'sota-system.config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/sota'),
-            ], 'sota-system.views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/sota'),
-            ], 'sota-system.views');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/sota'),
-            ], 'sota-system.views');*/
-
-            // Registering package commands.
-            // $this->commands([]);
-        }
     }
 
     /**
@@ -104,11 +80,6 @@ class SystemServiceProvider extends ServiceProvider
             'command.env:make',
             'command.env:set'
         ]);
-        
-        $this->app->singleton(
-            Illuminate\Contracts\Debug\ExceptionHandler::class,
-            Sota\System\Exceptions\Handler::class
-        );
         
     }
 }
