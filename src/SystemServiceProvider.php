@@ -46,8 +46,6 @@ class SystemServiceProvider extends ServiceProvider
             'bucket' => env('BACKUPS_AWS_BUCKET'),
         ]]);
 
-        config([ 'backup.backup.destination.disks' => [ 'backup' ]]);
-
         // Register the logging processor
         $monolog = logger();
         $processor = new RequestIdProcessor(request());
