@@ -10,11 +10,11 @@ class Handler extends ExceptionHandler
 {
     public function report(Exception $exception)
     {
-        //if (!App::environment('local')) {
+        if (!App::environment('local')) {
             if (app()->bound('sentry') && $this->shouldReport($exception)) {
                 app('sentry')->captureException($exception);
             }
-        //}
+        }
     
         parent::report($exception);
     }
