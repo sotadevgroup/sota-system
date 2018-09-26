@@ -12,7 +12,8 @@ class User extends BaseUser implements JWTSubject
     use Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email'
     ];
 
@@ -33,5 +34,9 @@ class User extends BaseUser implements JWTSubject
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function getName() {
+        return trim($this->first_name.' '.$this->last_name);
     }
 }

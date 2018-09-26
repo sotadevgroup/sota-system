@@ -24,7 +24,7 @@ class SentryContext
                 $user = auth()->user();
                 $sentry->user_context([
                     'id' => $user->id,
-                    'name' => $user->first_name.' '.$user->last_name,
+                    'name' => $user->getName(),
                     'email' => $user->email,
                     'username' => $user->username
                 ]);
