@@ -9,6 +9,8 @@ use Sota\System\Logging\RequestIdProcessor;
 use Sota\System\Middleware\SentryContext;
 use Sota\System\Commands\EnvMakeCommand;
 use Sota\System\Commands\EnvSetCommand;
+use Sota\System\Commands\UserCreateCommand;
+
 
 class SystemServiceProvider extends ServiceProvider
 {
@@ -73,10 +75,12 @@ class SystemServiceProvider extends ServiceProvider
         
         $this->app->bind('command.env:make', EnvMakeCommand::class);
         $this->app->bind('command.env:set', EnvSetCommand::class);
+        $this->app->bind('command.user:create', UserCreateCommand::class);
 
         $this->commands([
             'command.env:make',
-            'command.env:set'
+            'command.env:set',
+            'command.user:create'
         ]);
         
     }
