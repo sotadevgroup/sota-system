@@ -135,23 +135,7 @@ return [
     */
 
     'hosts' => [
-        // Production system
-        env('DEPLOY_HOST')  => [
-            'deploy_path' => '/home/forge/' . env('DEPLOY_HOST'),
-            'user' => 'forge',
-            'stage' => 'production'
-        ],
-        // Staging system
-        'staging.'.env('DEPLOY_HOST') => [
-            'deploy_path' => '/home/forge/staging.' . env('DEPLOY_HOST'),
-            'user' => 'forge',
-            'hostname' => 'staging.'.env('DEPLOY_HOST')
-        ],
-        // Preview system
-        'preview.'.env('DEPLOY_HOST') => [
-            'deploy_path' => '/home/forge/preview.' . env('DEPLOY_HOST'),
-            'user' => 'forge',
-        ]
+        
     ],
 
     /*
