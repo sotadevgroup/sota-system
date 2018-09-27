@@ -107,6 +107,21 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Deployment options
+    |--------------------------------------------------------------------------
+    |
+    | Options follow a simple key/value structure and are used within tasks
+    | to make them more configurable and reusable. You can use options to
+    | configure existing tasks or to use whithin your own custom tasks.
+    |
+    */
+
+   'options' => [
+        'application' => env('APP_NAME'),
+        'php_fpm_service' => env('PHP_FPM_SERVICE', 'php7.2-fpm'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
