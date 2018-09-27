@@ -12,7 +12,7 @@ set(
 
 set('sentry', [
     'organization' => env('SENTRY_ORG'),
-    'project' => env('SENTRY_PROJECT_FRONTEND'),
+    'project' => env('SENTRY_PROJECT'),
     'token' => env('SENTRY_AUTH_TOKEN'),
     'version' => env('RELEASE')
 ]);
