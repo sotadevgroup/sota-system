@@ -72,6 +72,7 @@ class SystemServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/json-api-paginate.php', 'json-api-paginate');
         $this->mergeConfigFrom(__DIR__.'/../config/query-builder.php', 'query-builder');
         $this->mergeConfigFrom(__DIR__.'/../config/sentry.php', 'sentry');
+        $this->mergeConfigFrom(__DIR__.'/../config/jwt.php', 'jwt');
         
         $this->app->bind('command.env:make', EnvMakeCommand::class);
         $this->app->bind('command.env:set', EnvSetCommand::class);
